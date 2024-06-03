@@ -1,0 +1,4 @@
+livekit-agents~=0.5.dev0
+livekit
+dashscope
+pyaudio
