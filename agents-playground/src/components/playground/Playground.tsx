@@ -49,6 +49,18 @@ export interface PlaygroundProps {
 
 const headerHeight = 56;
 
+const VideoPlayer = () => {
+  return (
+    <div>
+      <video muted width="320" height="180" loop autoPlay >
+        <source src="/videos/girl.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      {/* <p>No video track. Connect to get started.</p> */}
+    </div>
+  );
+};
+
 export default function Playground({
   logo,
   themeColors,
@@ -185,7 +197,7 @@ export default function Playground({
 
     const disconnectedContent = (
       <div className="flex items-center justify-center text-gray-700 text-center w-full h-full">
-        No video track. Connect to get started.
+        <VideoPlayer />
       </div>
     );
 
@@ -204,13 +216,14 @@ export default function Playground({
     );
 
     let content = null;
-    if (roomState === ConnectionState.Disconnected) {
-      content = disconnectedContent;
-    } else if (agentVideoTrack) {
-      content = videoContent;
-    } else {
-      content = loadingContent;
-    }
+    content = disconnectedContent
+    // if (roomState === ConnectionState.Disconnected) {
+    //   content = disconnectedContent;
+    // } else if (agentVideoTrack) {
+    //   content = videoContent;
+    // } else {
+    //   content = loadingContent;
+    // }
 
     return (
       <div className="flex flex-col w-full grow text-gray-950 bg-black rounded-sm border border-gray-800 relative">
